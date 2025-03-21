@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vexa - AI Sales Representative</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: rgba(17, 17, 17, 0.9); /* Semi-transparent navbar */
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px); /* Blur effect */
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            margin-right: 15px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #5CE1E6 !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero img.hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.90;
+        }
+
+        
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #111;
+        }
+
+        .features h2 {
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .features h3 {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .features p {
+            color: #ccc;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #000;
+        }
+
+        .pricing h2 {
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .pricing .card {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .pricing .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing .card h3 {
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        .pricing .card p {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+           /* FAQ Section */
+           .faq-section {
+            padding: 80px 0;
+            background-color: #111;
+            color: #fff;
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #5CE1E6;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            transition: 0.3s;
+        }
+
+        .faq-question:hover {
+            color: #fff;
+        }
+
+        .faq-answer {
+            display: none;
+            font-size: 1rem;
+            color: #bbb;
+            padding: 10px 15px;
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+            color: #5CE1E6;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .faq-item.active .icon {
+            transform: rotate(45deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 20px 0;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        footer p {
+            color: #ccc;
+            margin: 0;
+        }
+        .cta-btn {
+    background-color: #5CE1E6 !important; /* Force the theme color */
+    color: #000000 !important; /* Dark text for contrast */
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.cta-btn:hover {
+    background-color: #4cc3c9 !important; /* Slightly darker shade on hover */
+    transform: translateY(-3px);
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/images/vexa_white.png" alt="VEXA Logo" class="img-fluid" style="max-height: 30px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link btn-primary btn-round" href="#">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+   <!-- Hero Section -->
+<section id="hero" class="hero">
+    <!-- Hero Image as Background -->
+    <img src="assets/images/hero.jpg" alt="Hero Image" class="hero-image">
+
+    <!-- Dots Animation -->
+    <div class="dots-animation">
+        <div class="dots-container"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="container text-center">
+        <h1 class="animate__animated animate__fadeInDown">AI-Powered Sales Representative</h1>
+        <p class="animate__animated animate__fadeInUp text-light">Revolutionize your sales with intelligent automation</p>
+        <a href="#" class="btn btn-light animate__animated animate__fadeIn">Get Started</a>
+    </div>
+</section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="text-center">Why Choose Vexa?</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>24/7 Availability</h3>
+                    <p>Vexa works round the clock to handle customer queries.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Smart AI Responses</h3>
+                    <p>Intelligent conversations that feel human-like.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Seamless Integration</h3>
+                    <p>Easy to integrate with your existing CRM tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="text-center">Pricing Plans</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <h3>Basic</h3>
+                        <p>$19/month</p>
+                        <a href="#" class="btn btn-dark">Choose Plan</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <h3>Pro</h3>
+                        <p>$49/month</p>
+                        <a href="#" class="btn btn-dark">Choose Plan</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <h3>Enterprise</h3>
+                        <p>$99/month</p>
+                        <a href="#" class="btn btn-dark">Choose Plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2 class="faq-title text-light">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is Vexa AI and how does it work? 
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    Vexa AI is an AI-powered customer sales representative that automates interactions with clients, improving efficiency and conversions.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    How secure is Vexa AI for business use? 
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    We use top-tier encryption and security measures to ensure that your data is safe and confidential.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Can I customize Vexa AI to match my brand’s voice? 
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    Yes! Vexa AI allows full customization to align with your brand's tone and requirements.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Do you offer customer support? 
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    Absolutely! We offer 24/7 customer support to assist you with any issues.
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta-section text-center py-5" style="background-color: #111; color: #fff;">
+            <div class="container">
+                <strong><h1 class="mb-3">Ready to Get Moving?</h1></strong>
+                
+                <br>
+                <a href="#" class="btn cta-btn">Get Started</a>
+            </div>
+        </section>
+    
+    <script>
+        document.querySelectorAll(".faq-question").forEach(button => {
+            button.addEventListener("click", () => {
+                const faqItem = button.parentElement;
+                const faqAnswer = button.nextElementSibling;
+
+                faqItem.classList.toggle("active");
+                faqAnswer.style.display = faqAnswer.style.display === "block" ? "none" : "block";
+            });
+        });
+    </script>
+
+    <!-- Footer -->
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
